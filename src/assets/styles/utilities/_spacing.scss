@@ -1,0 +1,42 @@
+$spacings: 0, 0.25rem, 0.5rem, 1rem, 1.5rem, 3rem;
+@mixin spacing($type, $prefix) {
+  @each $space in $spacings {
+    $i: index($spacings, $space);
+    .#{$prefix}t-#{$i} {
+      #{$type}-top: $space;
+    }
+    .#{$prefix}b-#{$i} {
+      #{$type}-bottom: $space;
+    }
+    .#{$prefix}r-#{$i} {
+      #{$type}-right: $space;
+    }
+    .#{$prefix}l-#{$i} {
+      #{$type}-left: $space;
+    }
+    .#{$prefix}x-#{$i} {
+      #{$type}-left: $space;
+      #{$type}-right: $space;
+    }
+    .#{$prefix}y-#{$i} {
+      #{$type}-top: $space;
+      #{$type}-bottom: $space;
+    }
+    .#{$prefix}-#{$i} {
+      #{$type}: $space;
+    }
+  }
+}
+@include spacing('margin', 'm');
+@include spacing('padding', 'p');
+
+@each $space in $spacings {
+  $i: index($spacings, $space);
+  .gap-#{$i} {
+    gap: $space;
+  }
+}
+
+
+
+

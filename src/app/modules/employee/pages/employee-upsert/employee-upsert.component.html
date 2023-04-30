@@ -1,0 +1,111 @@
+<div *ngIf="isLoaded" class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-6 col-sm-8 col-12">
+      <h1>{{title}}</h1>
+      <div [formGroup]="formGroup" class="employee-form">
+        <mat-form-field appearance="outline">
+          <mat-label>Username</mat-label>
+          <input formControlName="username"
+                 matInput
+                 placeholder="Please enter your username">
+          <mat-error>{{formErrorMessage}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>First Name</mat-label>
+          <input formControlName="firstName"
+                 matInput
+                 placeholder="Please enter your first name">
+          <mat-error>{{formErrorMessage}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Last Name</mat-label>
+          <input formControlName="lastName"
+                 matInput
+                 placeholder="Please enter your last name">
+          <mat-error>{{formErrorMessage}}</mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input formControlName="email"
+                 matInput
+                 placeholder="Please enter email">
+          <mat-error>{{emailErrorMessage}}</mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field appearance="outline">
+          <mat-label>Birth Date</mat-label>
+          <input [matDatepicker]="birthDatePicker"
+                 [max]="maxDate"
+                 formControlName="birthDate"
+                 matInput
+                 placeholder="Please enter birth date">
+          <mat-datepicker-toggle [for]="birthDatePicker" matIconSuffix></mat-datepicker-toggle>
+          <mat-datepicker #birthDatePicker></mat-datepicker>
+          <mat-error>{{formErrorMessage}}</mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field appearance="outline" floatLabel="always">
+          <mat-label>Basic Salary</mat-label>
+          <span matPrefix>Rp</span>
+          <input [allowComma]="true"
+                 [isFormatThousandRupiah]="true"
+                 formControlName="basicSalary"
+                 inputNumber
+                 matInput
+                 placeholder="4.000.000">
+          <mat-error>{{formErrorMessage}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Status</mat-label>
+          <input formControlName="status"
+                 matInput
+                 placeholder="Please enter status">
+          <mat-error>{{formErrorMessage}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Group</mat-label>
+          <mat-select formControlName="group">
+            <mat-option>
+              <ngx-mat-select-search [formControl]="groupSearchControl"></ngx-mat-select-search>
+            </mat-option>
+            <mat-option *ngFor="let group of filteredGroupList$ | async" [value]="group">
+              {{group}}
+            </mat-option>
+          </mat-select>
+          <mat-error>{{formErrorMessage}}</mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field appearance="outline">
+          <mat-label>Description</mat-label>
+          <input [matDatepicker]="descPicker"
+                 [max]="maxDate"
+                 formControlName="description"
+                 matInput
+                 placeholder="Please enter description">
+          <mat-datepicker-toggle [for]="descPicker" matIconSuffix></mat-datepicker-toggle>
+          <mat-datepicker #descPicker></mat-datepicker>
+          <mat-error>{{formErrorMessage}}</mat-error>
+        </mat-form-field>
+
+        <div class="d-flex justify-content-end gap-3">
+          <button (click)="back()"
+                  mat-button>Back
+          </button>
+          <button (click)="submit()"
+                  color="primary"
+                  mat-raised-button>{{buttonText}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

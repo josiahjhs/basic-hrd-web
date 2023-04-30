@@ -1,0 +1,96 @@
+<div class="container py-5">
+  <h1>Employee List</h1>
+
+  <button (click)="addEmployee()"
+          color="primary"
+          mat-raised-button>Add new Employee
+  </button>
+
+  <div [formGroup]="formGroup" class="row my-4 filter-container">
+    <div class="col-md-4 col-12 mb-3">
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input formControlName="name"
+               matInput>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-4 col-12 mb-3">
+      <mat-form-field appearance="outline">
+        <mat-label>Username</mat-label>
+        <input formControlName="username"
+               matInput>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-4 col-12 mb-3">
+      <mat-form-field appearance="outline">
+        <mat-label>Group</mat-label>
+        <mat-select formControlName="group">
+          <mat-option>
+            <ngx-mat-select-search [formControl]="groupSearchControl"></ngx-mat-select-search>
+          </mat-option>
+          <mat-option *ngFor="let group of filteredGroupList$ | async" [value]="group">
+            {{group}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="col-12 d-flex justify-content-end">
+      <button (click)="clearFilter()"
+              *ngIf="isFilterHasData()"
+              color="warn"
+              mat-button>Clear Filter
+      </button>
+    </div>
+  </div>
+
+  <div class="table-container">
+    <table (matSortChange)="sortData($event)"
+           [matSortActive]="matSortActive"
+           [matSortDirection]="matSortDirection"
+           class="table"
+           matSort>
+      <tr>
+        <th>No</th>
+        <th mat-sort-header="username">Username</th>
+        <th mat-sort-header="name">Name</th>
+        <th mat-sort-header="email">Email</th>
+        <th mat-sort-header="group">Group</th>
+        <th>Action</th>
+      </tr>
+      <tr (click)="goToDetail(employee.username)"
+          *ngFor="let employee of employeeList; let index = index">
+        <td>{{(offset * limit) + (index + 1)}}</td>
+        <td>{{employee.username}}</td>
+        <td>{{employee.firstName + ' ' + employee.lastName}}</td>
+        <td>{{employee.email}}</td>
+        <td>{{employee.group}}</td>
+        <td>
+          <div class="table-action">
+            <button (click)="editEmployee(employee.username )"
+                    color="primary"
+                    mat-raised-button>edit
+            </button>
+            <button (click)="deleteEmployee(employee.username)"
+                    color="warn"
+                    mat-raised-button>delete
+            </button>
+          </div>
+        </td>
+      </tr>
+      <tr *ngIf="employeeList?.length === 0"
+          class="table-not-found">
+        <td class="text-center" colspan="10">There is no available data</td>
+      </tr>
+    </table>
+  </div>
+  <mat-paginator (page)="onSelectPage($event)"
+                 [length]="totalData"
+                 [pageIndex]="offset"
+                 [pageSizeOptions]="pageSizeOptions"
+                 [pageSize]="limit"
+                 aria-label="Select page">
+  </mat-paginator>
+</div>

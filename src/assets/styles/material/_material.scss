@@ -1,0 +1,15 @@
+mat-form-field {
+  width: 100%;
+  transition: 0.2s;
+
+  &:has(.ng-invalid):has(.ng-dirty), &:has(.ng-invalid):has(.ng-touched) {
+    margin-bottom: 1rem;
+    transition: 0.2s;
+  }
+}
+
+.filter-container {
+  .mat-mdc-form-field-subscript-wrapper {
+    display: none;
+  }
+}

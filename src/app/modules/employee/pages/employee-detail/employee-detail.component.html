@@ -1,0 +1,49 @@
+<div *ngIf="isLoaded" class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-6 col-sm-8 col-12">
+      <h1 class="mb-5">Detail Employee</h1>
+      <div class="row">
+        <div class="col-lg-4 col-sm-6 col-12 detail-item">
+          <h6>Username</h6>
+          <p>{{employee.username}}</p>
+        </div>
+        <div class="col-lg-4 col-sm-6 col-12 detail-item">
+          <h6>Email</h6>
+          <p>{{employee.email}}</p>
+        </div>
+        <div class="col-lg-4 col-sm-6 col-12 detail-item">
+          <h6>Basic Salary</h6>
+          <p>{{employee.basicSalary | rupiah}}</p>
+        </div>
+        <div class="col-lg-4 col-sm-6 col-12 detail-item">
+          <h6>First Name</h6>
+          <p>{{employee.firstName}}</p>
+        </div>
+        <div class="col-lg-4 col-sm-6 col-12 detail-item">
+          <h6>Last Name</h6>
+          <p>{{employee.lastName}}</p>
+        </div>
+        <div class="col-lg-4 col-sm-6 col-12 detail-item">
+          <h6>Birth Date</h6>
+          <p>{{employee.birthDate | date}}</p>
+        </div>
+        <div class="col-lg-4 col-sm-6 col-12 detail-item">
+          <h6>Status</h6>
+          <p>{{employee.status}}</p>
+        </div>
+        <div class="col-lg-4 col-sm-6 col-12 detail-item">
+          <h6>Group</h6>
+          <p>{{employee.group}}</p>
+        </div>
+        <div class="col-12 mt-4">
+          <button (click)="back()"
+                  class="w-100"
+                  color="primary"
+                  mat-raised-button>Ok
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
