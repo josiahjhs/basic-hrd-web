@@ -1,7 +1,7 @@
 
-# HrdWeb
+# Hrd Web (Human Resource App)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.5.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.5 by **josiah.jhs@gmail.com**
 
 
 ## Development server
@@ -17,7 +17,7 @@ Run `docker-compose up` for a dev server using docker. Navigate to `http://local
 ## Login Credentials
 1. username: **admin** ; password: **admin**
 2. username: **Bryan111** ; password: **ba123**
-3. username: **livliv** ; password: **livyY123**,
+3. username: **livliv** ; password: **livyY123**
 
 
 ## General Notes
@@ -35,7 +35,7 @@ but i still keep it there just in case it was needed.
 4. **Basic salary input** gonna be styled automatically with **rupiah currency formats**
 5. On update page, **username** form control is **uneditable**
 6. IMPORTANT MISS!!! i forgot to add **username duplicate checker**.... my bad :(((
-it was easy though, just copy paste the logic from *duplicate email checking* on **EmployeeService**
+it was easy though, just copy and paste the logic from *duplicate email checking* on **EmployeeService**
 
 ### Employee Detail
 1. Using **Rupiah Currency Format** e.g. *Rp. 100,000,005.012*
