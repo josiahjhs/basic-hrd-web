@@ -17,4 +17,4 @@ Run `docker-compose up` for a dev server using docker. Navigate to `http://local
 ## Login Credentials
 1. username: **admin** ; password: **admin**
 2. username: **Bryan111** ; password: **ba123**
-3. username: **livliv** ; password: **livyY123**,
+3. username: **livliv** ; password: **livyY123**
